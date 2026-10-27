@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Dashboard</title>
 </head>
 <body>
-  <div class="top-navbar">
+    <!-- TOP MENU -->
+<div class="top-navbar">
 
+    <!-- Logo and Search -->
     <div class="left-section">
 
         <div class="logo-container">
@@ -17,14 +19,188 @@
         <div class="search-container">
             <input
                 type="text"
-                placeholder="Search by doctor,patient,appointment" autofocus>
+                placeholder="Search by doctor, patient, appointment"
+                autofocus>
         </div>
 
     </div>
 
+    <!-- User Profile -->
     <div class="user-profile">
         A
     </div>
+
+</div>
+
+<!-- DASHBOARD LAYOUT -->
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <nav>
+            <a class="menu-item active">
+                <img src="assets/dashboard-icon.svg" alt="">
+                <span>Dashboard</span>
+            </a>
+
+            <a class="menu-item">
+                <img src="assets/patient-icon.svg" alt="">
+                <span>Patients</span>
+            </a>
+
+            <a class="menu-item">
+                <img src="assets/doctor-icon.svg" alt="">
+                <span>Doctors</span>
+            </a>
+
+            <a class="menu-item">
+                <img src="assets/nurses-icon.svg" alt="">
+                <span>Nurses</span>
+            </a>
+
+            <a class="menu-item">
+                <img src="assets/staffs-icon.svg" alt="">
+                <span>Staffs</span>
+            </a>
+
+            <a class="menu-item">
+                <img src="assets/appointment-icon.svg" alt="">
+                <span>Appointments</span>
+            </a>
+
+            <a class="menu-item">
+                <img src="assets/pharmacy-icon.svg" alt="">
+                <span>Pharmacy</span>
+            </a>
+        </nav>
+
+    <div class="logout-section">
+
+        <div class="menu-item logout">
+
+            <img src="assets/logout-icon.svg" alt="Logout">
+
+            <span>Logout</span>
+
+        </div>
+
+    </div>
+
+</aside>
+
+    <!-- DASHBOARD CONTENT -->
+    <section class="dashboard-content">
+
+        <h1>Hospital Management System Dashboard</h1>
+
+        <div class="title-decoration">
+    <div class="line-long"></div>
+    <div class="line-short"></div>
+        </div>
+       
+
+        <!-- DASHBOARD CARDS -->
+        <div class="cards-container">
+
+            <!-- DOCTORS CARD -->
+            <div class="dashboard-card">
+
+                <div class="card-top">
+
+                    <div class="icon-box">
+                        <img src="assets/doctor-card.svg" alt="">
+                    </div>
+
+                    <div>
+                        <h4>Doctors (Available)</h4>
+                        <h2>222</h2>
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+
+                    <span class="growth positive">
+                        <img src="assets/trending-up.svg" alt="">
+                        7.2%
+                    </span>
+
+                    <a href="#" class="view-link">
+                        View
+                        <img src="assets/external-link.svg" alt="">
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- PATIENT CARD -->
+            <div class="dashboard-card">
+
+                <div class="card-top">
+
+                    <div class="icon-box">
+                        <img src="assets/patient-card.svg" alt="">
+                    </div>
+
+                    <div>
+                        <h4>Patients (Checkup &amp; Details)</h4>
+                        <h2>1080</h2>
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+
+                    <span class="growth negative">
+                        <img src="assets/trending-down.svg" alt="">
+                        5.2%
+                    </span>
+
+                    <a href="#" class="view-link">
+                        View
+                        <img src="assets/external-link.svg" alt="">
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- APPOINTMENTS CARD -->
+            <div class="dashboard-card">
+
+                <div class="card-top">
+
+                    <div class="icon-box">
+                        <img src="assets/appointment-card.svg" alt="">
+                    </div>
+
+                    <div>
+                        <h4>Appointments (Scheduled)</h4>
+                        <h2>800</h2>
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+
+                    <span class="growth positive">
+                        7.2%
+                    </span>
+
+                    <a href="#" class="view-link">
+                        View
+                        <img src="assets/external-link.svg" alt="">
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 </div>
 </body>

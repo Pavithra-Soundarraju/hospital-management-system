@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
+  //Declarations -> which components belong to this module
   declarations: [
     AppComponent,
     DashboardComponent
@@ -15,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppRoutingModule
   ],
   providers: [],
+  //This tells Angular which component to start with when launching the application.
   bootstrap: [AppComponent]
 })
 export class AppModule { }
