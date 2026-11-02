@@ -1,1 +1,43 @@
-<p>login works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="login-page">
+        <div class="login-card">
+            <h2>Login to your account</h2>
+            <!-- EMAIL -->
+             <div class="input-group">
+                <label>Email</label>
+                <input type="email"
+                placeholder="abc@gmail.com" [(ngModel)]="email">
+             </div>
+
+             <!-- PASSWORD -->
+              <div class="input-group">
+                <div class="password-header">
+                    <label>Password</label>
+                    <a href="#">Forgot ?</a>
+                </div>
+                <input type="password"
+                placeholder="Enter your password"
+                [(ngModel)]="password">
+              </div>
+
+              <!-- LOGIN BUTTON -->
+               <button  class = "login-btn" (click)="login()">
+                Login now </button>
+
+                <!-- FOOTER -->
+                 <div class="signup-text">
+                    Don't Have An Account ?
+                    <a href="#">Sign Up</a>
+                 </div>
+
+        </div>
+    </div>
+</body>
+</html>

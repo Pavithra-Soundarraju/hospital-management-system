@@ -30,7 +30,7 @@
 
     <!-- User Profile -->
     <div class="user-profile">
-        A
+    {{userName}}
     </div>
     <!--  <div class="user-profile"
         (click) = "changeUserName()">
@@ -221,7 +221,7 @@
                 <img src="assets/wrong-icon.svg"
                 alt="Close"
                 class="close-icon"
-                (click)="cancelLogout">
+                (click)="cancelLogout()">
             </div>
 
             <div class="popup-content">
@@ -259,7 +259,7 @@
         
          <div class="login-section">
             <button class="login-btn"
-            (click)="closeSuccessPopup()">Login Again</button>
+            (click)="loginAgain()">Login Again</button>
          </div>
     </div>
     </div>

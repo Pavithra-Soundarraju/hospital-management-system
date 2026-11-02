@@ -6,6 +6,15 @@
   <title>Document</title>
 </head>
 <body>
-  <app-dashboard></app-dashboard>
+
+  <app-login
+  *ngIf="!isLoggedIn"
+  (loginSuccess)="onLoginSuccess()">
+</app-login>
+
+<app-dashboard
+  *ngIf="isLoggedIn"
+  (logoutSuccess)="onLogoutSuccess()">
+</app-dashboard>
 </body>
 </html>
