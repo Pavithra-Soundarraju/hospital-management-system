@@ -1,0 +1,271 @@
+
+<div class="patient-dashboard">
+
+  <!-- PAGE HEADER -->
+  <div class="header-container">
+
+    <div>
+      <h1>Patient Dashboard</h1>
+
+      <div class="title-decoration">
+        <div class="line-long"></div>
+        <div class="line-short"></div>
+      </div>
+    </div>
+
+    <a class="view-link" routerLink="/patients">
+      View All Patient List ↗
+    </a>
+
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="top-toolbar">
+
+    <div class="toggle-container">
+
+      <button
+        [class.active]="selectedTab === 'Emergency'"
+        (click)="changeTab('Emergency')">
+        Emergency
+      </button>
+
+      <button
+        [class.active]="selectedTab === 'Hospitalized'"
+        (click)="changeTab('Hospitalized')">
+        Hospitalized
+      </button>
+
+      <button
+        [class.active]="selectedTab === 'Outpatients'"
+        (click)="changeTab('Outpatients')">
+        Outpatients
+      </button>
+
+    </div>
+
+    <div class="action-buttons">
+
+      <button
+        class="add-patient-btn"
+        (click)="openAddPatient()">
+        + Add Patient
+      </button>
+
+      <button class="filter-btn">
+        ☷ Filter
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- PATIENT TABLE -->
+  <div class="table-card">
+
+    <div class="table-heading">
+      <h3>Patient Lists</h3>
+
+      <div class="status-legend">
+        <span><i class="dot discharged"></i> Discharged</span>
+        <span><i class="dot pending"></i> Report Pending</span>
+        <span><i class="dot icu"></i> ICU</span>
+        <span><i class="dot recovery"></i> In Recovery</span>
+        <span><i class="dot life"></i> Life Support</span>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>ADMITTED DATE</th>
+            <th>PATIENT NAME</th>
+            <th>ROOM</th>
+            <th>AREA OF CONCERN</th>
+            <th>IN CHARGE</th>
+            <th>STATUS</th>
+            <th>CONTACT</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let patient of patients()">
+
+            <td>{{ patient.admittedDate | date:'dd MMM, yyyy' }}</td>
+
+            <td class="patient-name">
+              {{ patient.patientName }}
+            </td>
+
+            <td>{{ patient.room }}</td>
+
+            <td>{{ patient.concern }}</td>
+
+            <td>{{ patient.doctor }}</td>
+
+            <td>
+              <span class="status-label">
+                <i
+                  class="dot"
+                  [ngClass]="{
+                    'discharged': patient.status === 'Discharged',
+                    'pending': patient.status === 'Report Pending',
+                    'icu': patient.status === 'ICU',
+                    'recovery': patient.status === 'In Recovery',
+                    'life': patient.status === 'Life Support'
+                  }">
+                </i>
+                {{ patient.status }}
+              </span>
+            </td>
+
+            <td>{{ patient.contact }}</td>
+
+            <td>
+              <button class="more-btn">⋮</button>
+            </td>
+
+          </tr>
+
+          <tr *ngIf="patients().length === 0">
+            <td colspan="8" class="empty-message">
+              No patients available. Click Add Patient to register.
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+      <button disabled>← Previous</button>
+      <button class="current-page">1</button>
+      <button disabled>Next →</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ADD PATIENT SLIDE PANEL -->
+<div
+  class="overlay"
+  *ngIf="showAddPatientPanel"
+  (click)="closePanel()">
+
+  <div
+    class="add-patient-panel"
+    (click)="$event.stopPropagation()">
+
+    <!-- GREEN HEADER -->
+    <div class="panel-header">
+
+      <h2>Add Patient</h2>
+
+      <button
+        class="close-btn"
+        type="button"
+        (click)="closePanel()">
+
+        <img src="assets/close-icon.svg" alt="Close">
+
+      </button>
+
+    </div>
+
+    <!-- FORM CONTENT -->
+    <div class="panel-body">
+
+      <div class="form-grid">
+
+        <label>
+          Patient Name
+          <input
+            placeholder="Enter patient name"
+            [(ngModel)]="newPatient.patientName">
+        </label>
+
+        <label>
+          Admitted Date
+          <input
+            type="date"
+            [(ngModel)]="newPatient.admittedDate">
+        </label>
+
+        <label>
+          Room Number
+          <input
+            placeholder="Enter room number"
+            [(ngModel)]="newPatient.room">
+        </label>
+
+        <label>
+          In Charge
+          <input
+            placeholder="Enter patient's incharger name"
+            [(ngModel)]="newPatient.doctor">
+        </label>
+
+        <label>
+          Area of Concern
+          <input
+            placeholder="Enter area of concern"
+            [(ngModel)]="newPatient.concern">
+        </label>
+
+        <label>
+          Patient Status
+          <select [(ngModel)]="newPatient.status">
+            <option value="">Select Status</option>
+            <option value="Discharged">Discharged</option>
+            <option value="Report Pending">Report Pending</option>
+            <option value="ICU">ICU</option>
+            <option value="In Recovery">In Recovery</option>
+            <option value="Life Support">Life Support</option>
+          </select>
+        </label>
+
+        <label class="full-width">
+          Contact Number
+          <input
+            type="tel"
+            placeholder="Enter contact number"
+            [(ngModel)]="newPatient.contact">
+        </label>
+
+      </div>
+
+      <!-- FOOTER BUTTONS -->
+      <div class="footer-actions">
+
+        <button
+          class="cancel-btn"
+          type="button"
+          (click)="closePanel()">
+          Cancel
+        </button>
+
+        <button
+          class="save-btn"
+          type="button"
+          [disabled]="!formValid()"
+          (click)="savePatient()">
+          Add Patient
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
