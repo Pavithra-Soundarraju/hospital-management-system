@@ -1,20 +1,190 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+@if (!isLoginPage) {
+<!-- GLOBAL TOP NAVBAR -->
 
-  <app-login
-  *ngIf="!isLoggedIn"
-  (loginSuccess)="onLoginSuccess()">
-</app-login>
+<div class="top-navbar">
 
-<app-dashboard
-  *ngIf="isLoggedIn"
-  (logoutSuccess)="onLogoutSuccess()">
-</app-dashboard>
-</body>
-</html>
+  <div class="left-section">
+
+    <div class="logo-container">
+      <img src="assets/hms-logo.svg" alt="HMS Logo">
+    </div>
+
+    <div class="search-container">
+      <input
+        type="text"
+        placeholder="Search by doctor, patient, appointment">
+    </div>
+
+  </div>
+
+  <div class="user-profile">
+    A
+  </div>
+
+</div>
+
+
+<!-- GLOBAL DASHBOARD LAYOUT -->
+
+<div class="dashboard-layout">
+
+  <!-- GLOBAL SIDEBAR -->
+
+  <aside class="sidebar">
+
+    <nav>
+
+      <a
+        class="menu-item"
+        routerLink="/dashboard"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+
+        <img src="assets/dashboard-icon.svg" alt="">
+        <span>Dashboard</span>
+
+      </a>
+
+      <a
+        class="menu-item"
+        routerLink="/patients"
+        routerLinkActive="active">
+
+        <img src="assets/patient-icon.svg" alt="">
+        <span>Patients</span>
+
+      </a>
+
+      <a class="menu-item">
+        <img src="assets/doctor-icon.svg" alt="">
+        <span>Doctors</span>
+      </a>
+
+      <a class="menu-item">
+        <img src="assets/nurses-icon.svg" alt="">
+        <span>Nurses</span>
+      </a>
+
+      <a class="menu-item">
+        <img src="assets/staffs-icon.svg" alt="">
+        <span>Staffs</span>
+      </a>
+
+      <a class="menu-item">
+        <img src="assets/appointment-icon.svg" alt="">
+        <span>Appointments</span>
+      </a>
+
+      <a class="menu-item">
+        <img src="assets/pharmacy-icon.svg" alt="">
+        <span>Pharmacy</span>
+      </a>
+
+    </nav>
+
+    <div class="logout-section">
+
+      <div class="menu-item logout" (click)="logout()">
+
+        <img src="assets/logout-icon.svg" alt="">
+
+        <span>Logout</span>
+
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- PAGE CONTENT CHANGES HERE -->
+
+  <main class="page-content">
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+</div>
+
+
+<!-- GLOBAL LOGOUT POPUPS -->
+
+<div class="popup-overlay" *ngIf="showLogoutPopup">
+
+  <div class="popup-card danger-popup">
+
+    <div class="popup-header">
+      <h3>Logout</h3>
+
+      <img
+        src="assets/wrong-icon.svg"
+        alt="Close"
+        class="close-icon"
+        (click)="cancelLogout()">
+    </div>
+
+    <div class="popup-content">
+
+      <p>
+        Are you sure
+        <span class="highlight-red">
+          want to log out of your account?
+        </span>
+      </p>
+
+      <p>You will need to log back in to access your dashboard.</p>
+
+    </div>
+
+    <div class="popup-footer">
+
+      <button class="cancel-btn" (click)="cancelLogout()">
+        <img src="assets/cancel-icon.svg" alt="">
+        Cancel
+      </button>
+
+      <button class="confirm-btn" (click)="confirmLogout()">
+        Confirm
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="popup-overlay" *ngIf="showLogoutSuccess">
+
+  <div class="popup-card success-popup">
+
+    <div class="popup-header">
+      <h3>Logout Successful</h3>
+    </div>
+
+    <div class="popup-content">
+
+      <p>You are successfully logged out. Thank you for visiting!</p>
+
+      <p>To login again, please click below.</p>
+
+    </div>
+
+    <div class="login-section">
+
+      <button class="login-btn" (click)="loginAgain()">
+        Login Again
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+}@else {
+
+  <!-- LOGIN PAGE WITHOUT NAVBAR AND SIDEBAR -->
+  <router-outlet></router-outlet>
+
+}

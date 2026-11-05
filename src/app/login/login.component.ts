@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output , inject} from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+
+  private router = inject(Router);
+
+
 
   email = '';
   password = '';
@@ -22,5 +27,8 @@ export class LoginComponent {
     console.log(this.password);
 
     this.loginSuccess.emit();
+  
+  this.router.navigate(['/dashboard']);
+
   }
 }

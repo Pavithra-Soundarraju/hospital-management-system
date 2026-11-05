@@ -1,0 +1,427 @@
+
+.patient-dashboard {
+  padding: 22px 20px;
+  background: #f8f9fb;
+  min-height: calc(100vh - 64px);
+}
+
+/* PAGE HEADER */
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.header-container h1 {
+  font-size: 25px;
+  font-weight: 600;
+  color: #171717;
+  margin: 0;
+}
+
+.title-decoration {
+  display: flex;
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.line-long {
+  width: 42px;
+  height: 4px;
+  background: #4A617B;
+  border-radius: 2px;
+}
+
+.line-short {
+  width: 18px;
+  height: 4px;
+  background: #4A617B;
+  border-radius: 2px;
+}
+
+.view-link {
+  color: #1684db;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* TOOLBAR */
+
+.top-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.toggle-container {
+  display: flex;
+  background: #eeeeef;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.toggle-container button {
+  border: none;
+  background: transparent;
+  padding: 9px 15px;
+  color: #777;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.toggle-container button.active {
+  background: white;
+  color: #1263a7;
+  box-shadow: 0 1px 4px #ddd;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.add-patient-btn {
+  background: #064c88;
+  color: white;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filter-btn {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* PATIENT TABLE */
+
+.table-card {
+  background: white;
+  border: 1px solid #e8e8e8;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.table-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 18px;
+  gap: 12px;
+}
+
+.table-heading h3 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.status-legend {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: #777;
+}
+
+.status-legend span,
+.status-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  min-width: 850px;
+}
+
+th {
+  background: #f7f8fa;
+  color: #777;
+  font-size: 10px;
+  text-align: left;
+  padding: 14px 12px;
+  white-space: nowrap;
+}
+
+td {
+  padding: 16px 12px;
+  font-size: 11px;
+  color: #555;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+}
+
+tbody tr:hover {
+  background: #f1f9f9;
+}
+
+.patient-name {
+  color: #252525;
+  font-weight: 500;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.discharged {
+  background: #16c875;
+}
+
+.pending {
+  background: #2168c4;
+}
+
+.icu {
+  background: #9216b9;
+}
+
+.recovery {
+  background: #19a9b6;
+}
+
+.life {
+  background: #f20e45;
+}
+
+.more-btn {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.empty-message {
+  text-align: center;
+  padding: 35px;
+}
+
+
+/* PAGINATION */
+
+.pagination {
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+  padding: 18px;
+}
+
+.pagination button {
+  background: white;
+  border: 1px solid #eee;
+  padding: 7px 11px;
+  font-size: 11px;
+}
+
+.pagination .current-page {
+  background: #1684db;
+  color: white;
+}
+
+
+/* ADD PATIENT OVERLAY */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+/* SIDE PANEL */
+
+.add-patient-panel {
+  width: 520px;
+  max-width: 100%;
+  height: 100%;
+  background: white;
+
+  /* No outer padding */
+  padding: 0;
+
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+
+/* GREEN HEADER */
+
+.panel-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #038E87;
+
+  padding: 16px;
+  margin: 0;
+
+  box-sizing: border-box;
+}
+
+.panel-header h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+
+/* CLOSE ICON */
+
+.close-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  padding: 0;
+  margin: 0;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+}
+
+.close-btn img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+
+/* FORM BODY - 16PX SPACING */
+
+.panel-body {
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  color: #555;
+}
+
+.form-grid input,
+.form-grid select {
+  width: 100%;
+  height: 42px;
+  padding: 9px;
+  box-sizing: border-box;
+
+  border: 1px solid #d6d6d6;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-grid input:focus,
+.form-grid select:focus {
+  border-color: #1684db;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+
+/* FOOTER BUTTONS */
+
+.footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.cancel-btn {
+  border: 1px solid #0a4f93;
+  background: white;
+  color: #0a4f93;
+  padding: 10px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn {
+  background: #0a4f93;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn:disabled {
+  background: #d4d4d4;
+  color: #888;
+  cursor: not-allowed;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 650px) {
+
+  .patient-dashboard {
+    padding: 15px;
+  }
+
+  .header-container {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
+
+  .add-patient-panel {
+    width: 100%;
+  }
+
+}

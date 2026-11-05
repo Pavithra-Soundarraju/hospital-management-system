@@ -1,27 +1,52 @@
-import { Component } from '@angular/core';
+
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
+import {
+  RouterOutlet,
+  RouterLink,
+  RouterLinkActive
+} from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule,
-    LoginComponent,
-    DashboardComponent
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive
   ],
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
 
-  isLoggedIn = false;
+    private router = inject(Router);
+  showLogoutPopup = false;
+  showLogoutSuccess = false;
 
-  onLoginSuccess() {
-    this.isLoggedIn = true;
+  logout() {
+    this.showLogoutPopup = true;
   }
 
-  onLogoutSuccess() {
-    this.isLoggedIn = false;
+  cancelLogout() {
+    this.showLogoutPopup = false;
   }
+
+  confirmLogout() {
+    this.showLogoutPopup = false;
+    this.showLogoutSuccess = true;
+  }
+
+  loginAgain() {
+  this.showLogoutSuccess = false;
+  this.router.navigate(['/login']);
+}
+
+get isLoginPage(): boolean {
+  return this.router.url === '/login';
+}
+
 }

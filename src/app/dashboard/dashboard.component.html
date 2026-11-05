@@ -1,268 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-</head>
-<body>
-    <!-- TOP MENU -->
-<div class="top-navbar">
 
-    <!-- Logo and Search -->
-    <div class="left-section">
+<section class="dashboard-content">
 
-        <div class="logo-container">
-            <img [src]="hospitalLogo" alt="HMS Logo">
-        </div>
+    <!-- DASHBOARD HEADING -->
+    <h1>Hospital Management System Dashboard</h1>
 
-        <div class="search-container">
-            <input
-                type="text"
-                placeholder="Search by doctor, patient, appointment"
-                autofocus  
-                [(ngModel)]="searchText">
-        </div>
-
+    <div class="title-decoration">
+        <div class="line-long"></div>
+        <div class="line-short"></div>
     </div>
 
-    <!-- User Profile -->
+    <!-- DASHBOARD CARDS -->
+    <div class="cards-container">
 
-    <!-- User Profile -->
-    <div class="user-profile">
-    {{userName}}
-    </div>
-    <!--  <div class="user-profile"
-        (click) = "changeUserName()">
-    {{userName}}
-    </div> -->
+        <!-- DOCTORS CARD -->
+        <div class="dashboard-card">
 
-</div>
+            <div class="card-top">
 
-<!-- DASHBOARD LAYOUT -->
-<!-- DASHBOARD LAYOUT -->
-<div class="dashboard-layout" >
-
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-
-        <nav>
-            <a class="menu-item active">
-                <img src="assets/dashboard-icon.svg" alt="">
-                <span>Dashboard</span>
-            </a>
-
-            <a class="menu-item">
-                <img src="assets/patient-icon.svg" alt="">
-                <span>Patients</span>
-            </a>
-
-            <a class="menu-item">
-                <img src="assets/doctor-icon.svg" alt="">
-                <span>Doctors</span>
-            </a>
-
-            <a class="menu-item">
-                <img src="assets/nurses-icon.svg" alt="">
-                <span>Nurses</span>
-            </a>
-
-            <a class="menu-item">
-                <img src="assets/staffs-icon.svg" alt="">
-                <span>Staffs</span>
-            </a>
-
-            <a class="menu-item">
-                <img src="assets/appointment-icon.svg" alt="">
-                <span>Appointments</span>
-            </a>
-
-            <a class="menu-item">
-                <img src="assets/pharmacy-icon.svg" alt="">
-                <span>Pharmacy</span>
-            </a>
-        </nav>
-
-    <div class="logout-section">
-
-        <div class="menu-item logout"  (click)="logout()">
-
-            <img src="assets/logout-icon.svg" alt="Logout">
-
-            <span>Logout</span>
-
-        </div>
-
-    </div>
-
-</aside>
-
-    <!-- DASHBOARD CONTENT -->
-    <section class="dashboard-content">
-
-        <h1>Hospital Management System Dashboard</h1>
-        <div class="title-decoration">
-    <div class="line-long"></div>
-    <div class="line-short"></div>
-        </div>
-        <p>Search Text: {{searchText}}</p>
-       
-
-        <!-- DASHBOARD CARDS -->
-        <div class="cards-container">
-
-            <!-- DOCTORS CARD -->
-            <div class="dashboard-card">
-
-                <div class="card-top">
-
-                    <div class="icon-box">
-                        <img src="assets/doctor-card.svg" alt="">
-                    </div>
-
-                    <div>
-                        <h4>Doctors (Available)</h4>
-                        <h2>{{doctorCount}}</h2> 
-                    </div>
-
+                <div class="icon-box">
+                    <img src="assets/doctor-card.svg" alt="Doctors">
                 </div>
 
-                <div class="card-footer">
-
-                    <span class="growth positive">
-                        <img src="assets/trending-up.svg" alt="">
-                        7.2%
-                    </span>
-
-                    <a href="#" class="view-link">
-                        View
-                        <img src="assets/external-link.svg" alt="">
-                    </a>
-
+                <div>
+                    <h4>Doctors (Available)</h4>
+                    <h2>{{ doctorCount }}</h2>
                 </div>
 
             </div>
 
-            <!-- PATIENT CARD -->
-            <div class="dashboard-card">
+            <div class="card-footer">
 
-                <div class="card-top">
+                <span class="growth positive">
+                    <img src="assets/trending-up.svg" alt="">
+                    7.2%
+                </span>
 
-                    <div class="icon-box">
-                        <img src="assets/patient-card.svg" alt="">
-                    </div>
-
-                    <div>
-                        <h4>Patients (Checkup &amp; Details)</h4>
-                        <h2>{{patientCount}}</h2>
-                    </div>
-
-                </div>
-
-                <div class="card-footer">
-
-                    <span class="growth negative">
-                        <img src="assets/trending-down.svg" alt="">
-                        5.2%
-                    </span>
-
-                    <a href="#" class="view-link">
-                        View
-                        <img src="assets/external-link.svg" alt="">
-                    </a>
-
-                </div>
-
-            </div>
-
-            <!-- APPOINTMENTS CARD -->
-            <div class="dashboard-card">
-
-                <div class="card-top">
-
-                    <div class="icon-box">
-                        <img src="assets/appointment-card.svg" alt="">
-                    </div>
-
-                    <div>
-                        <h4>Appointments (Scheduled)</h4>
-                        <h2>{{appointmentCount}}</h2>
-                    </div>
-
-                </div>
-
-                <div class="card-footer">
-
-                    <span class="growth positive">
-                        <img src="assets/trending-up.svg" alt="">
-                        9.2%
-                    </span>
-
-                    <a href="#" class="view-link">
-                        View
-                        <img src="assets/external-link.svg" alt="">
-                    </a>
-
-                </div>
+                <a href="#" class="view-link">
+                    View
+                    <img src="assets/external-link.svg" alt="">
+                </a>
 
             </div>
 
         </div>
 
-    </section>
+        <!-- PATIENT CARD -->
+        <div class="dashboard-card">
 
-    <div
-        class = "popup-overlay"
-        *ngIf="showLogoutPopup">
-        <div class="popup-card danger-popup">
-            <div class ="popup-header">
-                <h3>Logout</h3>
-                <img src="assets/wrong-icon.svg"
-                alt="Close"
-                class="close-icon"
-                (click)="cancelLogout()">
+            <div class="card-top">
+
+                <div class="icon-box">
+                    <img src="assets/patient-card.svg" alt="Patients">
+                </div>
+
+                <div>
+                    <h4>Patients (Checkup &amp; Details)</h4>
+                    <h2>{{ patientCount }}</h2>
+                </div>
+
             </div>
 
-            <div class="popup-content">
-                <p>Are you sure 
-                    <span class = "highlight-red">
-                        want to log out of your account?
-                    </span>
-                </p>
-                <p>you will need to  log back in to access your dashboard</p>
+            <div class="card-footer">
+
+                <span class="growth negative">
+                    <img src="assets/trending-down.svg" alt="">
+                    5.2%
+                </span>
+
+                <a routerLink="/patients" class="view-link">
+                    View
+                    <img src="assets/external-link.svg" alt="">
+                </a>
+
             </div>
-            
-            <div class="popup-footer">
-                <button class="cancel-btn"
-                (click)="cancelLogout()">
-            <img src="assets/cancel-icon.svg"> Cancel </button>
-                <button class="confirm-btn"
-                (click)="confirmLogout()">Confirm</button>
-            </div>                          
+
         </div>
+
+        <!-- APPOINTMENTS CARD -->
+        <div class="dashboard-card">
+
+            <div class="card-top">
+
+                <div class="icon-box">
+                    <img src="assets/appointment-card.svg" alt="Appointments">
+                </div>
+
+                <div>
+                    <h4>Appointments (Scheduled)</h4>
+                    <h2>{{ appointmentCount }}</h2>
+                </div>
+
+            </div>
+
+            <div class="card-footer">
+
+                <span class="growth positive">
+                    <img src="assets/trending-up.svg" alt="">
+                    9.2%
+                </span>
+
+                <a href="#" class="view-link">
+                    View
+                    <img src="assets/external-link.svg" alt="">
+                </a>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div class = "popup-overlay" 
-    *ngIf ="showLogoutSuccess">
-    <div class="popup-card success-popup">
-         <div class="popup-header">
-            <h3>Logout Successful</h3>
-            <img src = "assets/wrong-icon.svg"
-            alt="Close"
-            class="success-icon">
-         </div>
-         <div class="popup-content">
-            <p>You are successfully logout thank you for visiting!</p>
-            <p>To login again please click login below</p>
-         </div>
-        
-         <div class="login-section">
-            <button class="login-btn"
-            (click)="loginAgain()">Login Again</button>
-         </div>
-    </div>
-    </div>
-</div>
-</body>
-</html>
+</section>
