@@ -1,0 +1,20 @@
+@if (patient) {
+
+  <div>
+    <h2>Patient Details</h2>
+
+    <p>Patient ID: {{ patient.id }}</p>
+    <p>Name: {{ patient.patientName }}</p>
+    <p>Admitted Date: {{ patient.admittedDate }}</p>
+    <p>Room: {{ patient.room }}</p>
+    <p>Concern: {{ patient.concern }}</p>
+    <p>Doctor: {{ patient.doctor }}</p>
+    <p>Status: {{ patient.status }}</p>
+    <p>Contact: {{ patient.contact }}</p>
+  </div>
+
+} @else {
+
+  <p>Patient not found!</p>
+
+}

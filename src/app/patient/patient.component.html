@@ -81,6 +81,7 @@
 
         <thead>
           <tr>
+            <th>Patient ID</th>
             <th>ADMITTED DATE</th>
             <th>PATIENT NAME</th>
             <th>ROOM</th>
@@ -94,7 +95,12 @@
 
         <tbody>
 
-          <tr *ngFor="let patient of patients()">
+          <tr
+           *ngFor="let patient of paginatedPatients"
+          [routerLink]="['/patients', patient.id]"
+          class="clickable-row">
+
+            <td>{{ patient.id }}</td>
 
             <td>{{ patient.admittedDate | date:'dd MMM, yyyy' }}</td>
 
@@ -146,12 +152,27 @@
 
     <!-- PAGINATION -->
     <div class="pagination">
-      <button disabled>← Previous</button>
-      <button class="current-page">1</button>
-      <button disabled>Next →</button>
-    </div>
 
-  </div>
+  <button
+    (click)="previousPage()"
+    [disabled]="currentPage === 1">
+    ← Previous
+  </button>
+
+  <button
+    *ngFor="let page of pageNumbers"
+    [class.current-page]="currentPage === page"
+    (click)="goToPage(page)">
+    {{ page }}
+  </button>
+
+  <button
+    (click)="nextPage()"
+    [disabled]="currentPage === totalPages">
+    Next →
+  </button>
+
+</div>
 
 </div>
 
